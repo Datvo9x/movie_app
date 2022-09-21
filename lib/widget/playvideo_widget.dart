@@ -93,8 +93,8 @@ class _VideoMovieState extends State<VideoMovie> {
                       )
                     : const Center(
                         child: SizedBox(
-                          height: 30,
-                          width: 30,
+                          height: 25,
+                          width: 25,
                           child: CircularProgressIndicator(
                             color: Color.fromARGB(255, 238, 98, 16),
                           ),

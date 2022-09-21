@@ -26,7 +26,7 @@ class _HorizontalWidgetWState extends State<HorizontalWidgetW> {
             itemCount: snapshot.data!.size,
             itemBuilder: (context, index) {
               return SizedBox(
-                width: 200,
+                width: 190,
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -44,12 +44,12 @@ class _HorizontalWidgetWState extends State<HorizontalWidgetW> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(3, 8, 8, 5),
+                        padding: const EdgeInsets.fromLTRB(3, 8, 5, 5),
                         child: Stack(
                           alignment: Alignment.topRight,
                           children: [
                             Container(
-                              height: 120,
+                              height: 110,
                               decoration: BoxDecoration(
                                 color: Colors.black,
                                 borderRadius: BorderRadius.circular(6.0),
@@ -68,15 +68,25 @@ class _HorizontalWidgetWState extends State<HorizontalWidgetW> {
                                   topRight: Radius.circular(6),
                                 ),
                               ),
-                              padding: const EdgeInsets.all(5),
-                              child: Column(
+                              width: 54,
+                              padding: const EdgeInsets.all(4),
+                              child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    snapshot.data!.docs[index]['duration'],
+                                    "${snapshot.data!.docs[index]['rating']}  ",
                                     style: const TextStyle(
                                       fontSize: 12,
-                                      color: Colors.white70,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(bottom: 1.0),
+                                    child: Icon(
+                                      Icons.star,
+                                      size: 12,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ],
@@ -95,17 +105,6 @@ class _HorizontalWidgetWState extends State<HorizontalWidgetW> {
                             fontSize: 13,
                             color: Color.fromRGBO(250, 246, 245, 1),
                             fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
-                        child: Text(
-                          'Thời lượng: ${snapshot.data!.docs[index]['duration']}',
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white70,
                           ),
                         ),
                       ),

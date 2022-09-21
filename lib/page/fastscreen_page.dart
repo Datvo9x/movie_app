@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:preload_page_view/preload_page_view.dart';
+import '../constract/title_gradient.dart';
 import '../widget/fastvideo_widget.dart';
 
 class Fastscreen extends StatefulWidget {
@@ -30,10 +30,13 @@ class _FastscreenState extends State<Fastscreen> {
             //   child: Text('Dành cho bạn'),
             // ),
             Padding(
-              padding: EdgeInsets.only(right: 8.0),
+              padding: EdgeInsets.only(right: 10.0, top: 10),
               child: Icon(Icons.search),
             ),
-            Icon(Icons.camera_alt_outlined),
+            Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Icon(Icons.camera_alt_outlined),
+            ),
           ],
         ),
       ),
@@ -56,225 +59,221 @@ class _FastscreenState extends State<Fastscreen> {
             itemCount: snapshot.data!.size,
             itemBuilder: (context, index) {
               return Container(
-                decoration: const BoxDecoration(
-                  color: Colors.transparent,
-                  image: DecorationImage(
-                      image: ExactAssetImage("assets/images/a2jpg.jpg"),
-                      fit: BoxFit.cover),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                color: const Color.fromARGB(255, 3, 3, 3),
+                child: Stack(
                   children: <Widget>[
                     Center(
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height / 2,
-                        child: Fastvideo(
-                          videoFast: snapshot.data!.docs[index]['videoFast'],
-                          currentIndex: index,
-                          pageIndex: _pageIndex,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 200,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                      child: Stack(
                         children: [
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                1.2,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8.0, bottom: 8),
-                                          child: Text(
-                                            'Miễn phí cho sử dụng thương mại Không cần thẩm quyền'
-                                            'Miễn phí cho sử dụng thương mại Không cần thẩm quyền',
-                                            maxLines: 3,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                              fontSize: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  55,
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 1.9,
+                            child: Fastvideo(
+                              videoFast: snapshot.data!.docs[index]
+                                  ['videoFast'],
+                              currentIndex: index,
+                              pageIndex: _pageIndex,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 50,
+                            right: 0,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                          10,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: Column(
+                                          children: const [
+                                            Icon(
+                                              Icons.favorite,
+                                              size: 30,
                                               color: Colors.white,
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                1,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8.0, bottom: 10),
-                                          child: Text(
-                                            '#Anna #Anna2022 ',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  54,
-                                              color: const Color.fromARGB(
-                                                  237, 227, 224, 224),
+                                            SizedBox(height: 6),
+                                            Text(
+                                              '126',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 14,
+                                                color: Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                              ),
                                             ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 12),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                          10,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: Column(
+                                          children: const [
+                                            Icon(
+                                              Icons.comment_rounded,
+                                              size: 28,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(height: 4),
+                                            Text(
+                                              '12',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 14,
+                                                color: Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                          10,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0.0),
+                                        child: Column(
+                                          children: const [
+                                            Icon(
+                                              Icons.more_horiz,
+                                              size: 30,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SizedBox(
+                            height: 50,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                          1.2,
+                                      child: const Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 10.0, bottom: 6),
+                                        child: Text(
+                                          'Shang-Chi và huyền thoại Thập Luân - là bộ phim siêu anh '
+                                          'hùng của Mỹ được ra mắt vào năm 2021 dựa trên nhân vật Shang-Chi của Marvels. trên nhân vật',
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.white,
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                8,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(0.0),
-                                          child: Column(
-                                            children: const [
-                                              Icon(
-                                                Icons.favorite,
-                                                size: 25,
-                                                color: Colors.white,
-                                              ),
-                                              SizedBox(height: 4),
-                                              Text(
-                                                '126',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 14,
-                                                  color: Color.fromARGB(
-                                                      237, 227, 224, 224),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 1,
+                                    child: const Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 10.0, bottom: 8),
+                                      child: Text(
+                                        '#Anna #Anna2022 ',
+                                        style: TextStyle(
+                                          // decoration: TextDecoration.underline,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          color: Color.fromARGB(
+                                              237, 227, 224, 224),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                8,
-                                        child: Padding(
-                                            padding: const EdgeInsets.all(0.0),
-                                            child: Column(
-                                              children: const [
-                                                Icon(
-                                                  Icons.comment_outlined,
-                                                  size: 25,
-                                                  color: Colors.white,
-                                                ),
-                                                SizedBox(height: 4),
-                                                Text(
-                                                  '12',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: Color.fromARGB(
-                                                        237, 227, 224, 224),
-                                                  ),
-                                                ),
-                                              ],
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                8,
-                                        child: Padding(
-                                            padding: const EdgeInsets.all(0.0),
-                                            child: Column(
-                                              children: const [
-                                                Icon(
-                                                  Icons.more_horiz,
-                                                  size: 26,
-                                                  color: Colors.white,
-                                                ),
-                                              ],
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
+                                    ),
                                   ),
                                 ],
                               ),
                             ],
                           ),
-                          Container(
-                            padding: const EdgeInsets.only(
-                                left: 10, right: 10, bottom: 10),
-                            height: 34,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      '[Review] ',
-                                      style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              42,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white),
-                                    ),
-                                    Text(
-                                      snapshot.data!.docs[index]['nameFast'],
-                                      style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              42,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white),
-                                    ),
-                                  ],
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 10.0, bottom: 10),
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                  top: 4, bottom: 4, right: 8, left: 8),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 0.7,
+                                  color:
+                                      const Color.fromARGB(193, 218, 233, 46),
                                 ),
-                                Container(
-                                  child: Lottie.asset('assets/images/ex.json',
-                                      width: MediaQuery.maybeOf(context)!
-                                              .size
-                                              .height /
-                                          26),
-                                ),
-                              ],
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Row(
+                                children: [
+                                  const GradientText(
+                                    'Review ',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color.fromARGB(255, 227, 112, 5),
+                                        Color.fromARGB(255, 233, 222, 10),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    snapshot.data!.docs[index]['nameFast'],
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

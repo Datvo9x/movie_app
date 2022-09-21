@@ -53,7 +53,7 @@ class _FastvideoState extends State<Fastvideo> {
         ? _videoPlayerController!.play()
         : _videoPlayerController!.pause();
     return Container(
-      color: const Color.fromARGB(255, 14, 14, 14),
+      color: const Color.fromARGB(0, 216, 216, 216),
       child: FutureBuilder(
           future: _initializeVideoPlayer,
           builder: (context, snapshot) {
@@ -64,7 +64,7 @@ class _FastvideoState extends State<Fastvideo> {
                   alignment: Alignment.bottomCenter,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 3),
+                      padding: const EdgeInsets.only(bottom: 1),
                       child: VideoPlayer(_videoPlayerController!),
                     ),
                     Padding(
@@ -95,9 +95,11 @@ class _FastvideoState extends State<Fastvideo> {
                 ),
               );
             } else {
-              return Center(
-                child: Lottie.asset('assets/images/loading.json',
-                    width: MediaQuery.maybeOf(context)!.size.height / 10),
+              return Container(
+                color: Colors.transparent,
+                child: Center(
+                  child: Lottie.asset('assets/images/loading.json', width: 60),
+                ),
               );
             }
           }),
