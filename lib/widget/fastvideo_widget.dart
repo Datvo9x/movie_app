@@ -1,14 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:video_player/video_player.dart';
 
 // ignore: must_be_immutable
 class Fastvideo extends StatefulWidget {
-  String videoFast;
+  String videoFast, id;
+  int view;
   late final int pageIndex;
   late final int currentIndex;
   Fastvideo({
     Key? key,
+    required this.id,
+    required this.view,
     required this.videoFast,
     required this.pageIndex,
     required this.currentIndex,
@@ -26,10 +30,28 @@ class _FastvideoState extends State<Fastvideo> {
   @override
   void initState() {
     _videoPlayerController = VideoPlayerController.network(widget.videoFast);
+    myFuture();
     _initializeVideoPlayer = _videoPlayerController!.initialize();
     _videoPlayerController!.setLooping(false);
-
     super.initState();
+  }
+
+  Future myFuture() async {
+    try {
+      await Future.delayed(const Duration(seconds: 3));
+      setState(() {
+        FirebaseFirestore.instance
+            .collection('fastfilm')
+            .doc(widget.id)
+            .update({
+              "view": widget.view + 1,
+            })
+            .then((value) => print(" add view"))
+            .catchError((error) => print("Failed to add user: $error"));
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override

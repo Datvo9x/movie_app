@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_app/widget/horizontal_height_widget.dart';
-import 'package:movie_app/widget/horizontal_width_widget.dart';
+import 'package:movie_app/widget/horizontal_height_widget1.dart';
 import 'package:movie_app/widget/titlewiper_widget.dart';
+import 'package:movie_app/widget/titlewiper_widget1.dart';
 import '../constract/title_gradient.dart';
-import '../screen/seach_screen.dart';
+import '../screen/seach/seach_screen.dart';
 import '../widget/carousel_widget.dart';
 import '../widget/horizontal_top_widget.dart.dart';
 
@@ -26,19 +27,15 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _gradientColor1 = Colors.transparent;
       });
-      // } else if ((_scrollViewController.offset >= 100) &&
-      //     (_scrollViewController.offset < 200)) {
-      //   setState(() {
-      //     _gradientColor1 = Color.fromARGB(166, 29, 29, 28);
-      //   });
     } else if ((_scrollViewController.offset >= 200)) {
       setState(() {
-        _gradientColor1 = Color.fromARGB(255, 18, 18, 18);
+        _gradientColor1 = const Color.fromARGB(255, 18, 18, 18);
       });
     }
   }
 
   @override
+
   // ignore: must_call_super
   void initState() {
     _scrollViewController = ScrollController(initialScrollOffset: 0.0);
@@ -122,11 +119,12 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 5, right: 5, bottom: 5, top: 20),
+                    left: 14, right: 5, bottom: 5, top: 20),
                 child: Column(
                   children: const [
                     TitleSlide(
-                      text: 'Top 5 Phim Thịnh Hành',
+                      text: 'Top 5 Phim Thịnh Hành ',
+                      text1: '',
                     ),
                     SizedBox(
                       height: 165,
@@ -136,43 +134,80 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
-                child: Column(
-                  children: const [
-                    TitleSlide(
-                      text: 'Phim Mới Thịnh Hành Trên Fire Movie',
-                    ),
-                    SizedBox(
-                      height: 165,
-                      child: HorizontalWidgetH(),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                padding: const EdgeInsets.only(left: 14, right: 5, bottom: 5),
                 child: Column(
                   children: const [
                     TitleSlide(
                       text: 'Hành Động HollyWood',
+                      text1: '',
                     ),
                     SizedBox(
                       height: 165,
-                      child: HorizontalWidgetH(),
+                      child: HorizontalWidgetH(tloai: "Hành động"),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 5, right: 5),
+                padding: const EdgeInsets.only(
+                  left: 14,
+                  right: 5,
+                  bottom: 5,
+                ),
                 child: Column(
                   children: const [
                     TitleSlide(
-                      text: 'Top Phim Mới',
+                      text: 'Phim Viễn Tưởng Hot',
+                      text1: '',
                     ),
                     SizedBox(
-                      height: 150,
-                      child: HorizontalWidgetW(),
+                      height: 165,
+                      child: HorizontalWidgetH(tloai: 'Viễn tưởng'),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 14, right: 5, bottom: 5),
+                child: Column(
+                  children: const [
+                    TitleSlide1(
+                      text: 'Hành Động Võ Thuật Trung Hoa',
+                      text1: '',
+                    ),
+                    SizedBox(
+                      height: 165,
+                      child: HorizontalWidgetH1(tloai: "Trung Quốc"),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 14, right: 5, bottom: 5),
+                child: Column(
+                  children: const [
+                    TitleSlide(
+                      text: 'Phim Huyền Bí Ma Thuật Hot',
+                      text1: '',
+                    ),
+                    SizedBox(
+                      height: 165,
+                      child: HorizontalWidgetH(tloai: 'Huyền bí'),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 14, right: 5, bottom: 5),
+                child: Column(
+                  children: const [
+                    TitleSlide(
+                      text: 'Phim hoạt hình Hot',
+                      text1: '',
+                    ),
+                    SizedBox(
+                      height: 165,
+                      child: HorizontalWidgetH(tloai: "Hoạt hình"),
                     ),
                   ],
                 ),

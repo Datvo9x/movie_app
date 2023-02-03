@@ -91,7 +91,7 @@ class AppColors {
   static const lightBlueShadow = Color(0XAA92aeff);
 }
 
-var filmTitle = TextStyle(
+var filmTitle = const TextStyle(
   color: Colors.white60,
   fontWeight: FontWeight.w300,
   fontSize: 13,
